@@ -19,10 +19,25 @@
 
     <!-- HandleMapping 无需配置，spring mvc 默认启动 -->
     <!--扩展了注解驱动，可以将请求参数绑定到控制器参数-->
-    <mvc:annotation-driven/>
+    <!--conversion-service 配置自定义converter-->
+    <mvc:annotation-driven conversion-service="customConversionService"/>
 
     <!-- 访问 静态资源 css js images -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!--由Converter工厂配置自定义转换器-->
+    <!--spring 内置3中类型转换器接口，分别是
+        Converter<S,T>
+        ConverterFactory<S,R>
+        GenericConverter
+        自定义的类型转换器必须实现其中一个-->
+    <bean id="customConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="org.springframework.core.convert.support.StringToBooleanConverter"/>
+            </set>
+        </property>
+    </bean>
 
     <!--全局过滤器 配置-->
     <!--可以形成一个拦截器链，拦截器的执行顺序是按声明的先后顺序执行的，
