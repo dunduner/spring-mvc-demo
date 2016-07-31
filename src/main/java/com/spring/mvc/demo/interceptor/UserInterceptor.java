@@ -26,10 +26,10 @@ public class UserInterceptor implements HandlerInterceptor {
         log.debug("执行了 UserInterceptor 中的 preHandle 方法");
 
         //用户未登录 终止请求
-//        if (request.getSession().getAttribute("user") == null) {
-//            request.getRequestDispatcher("/login/init").forward(request, response);
-//            return false;
-//        }
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect(request.getContextPath()+"/login/init");
+            return false;
+        }
 
         return true;
     }

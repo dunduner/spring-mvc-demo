@@ -25,9 +25,17 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <!--全局过滤器 配置-->
+    <!--可以形成一个拦截器链，拦截器的执行顺序是按声明的先后顺序执行的，
+                    先声明的拦截器中的preHandle方法会先执行，
+                    然而它的postHandle方法和afterCompletion方法却会后执行-->
     <mvc:interceptors>
-        <!--<bean class="com.spring.mvc.demo.interceptor.HelloInterceptor"/>-->
-        <bean class="com.spring.mvc.demo.interceptor.UserInterceptor"/>
+        <!--拦截所有请求-->
+        <bean class="com.spring.mvc.demo.interceptor.HelloInterceptor"/>
+        <mvc:interceptor>
+            <!--需要进行拦截的请求路径-->
+            <mvc:mapping path="/user/list"/>
+            <bean class="com.spring.mvc.demo.interceptor.UserInterceptor" />
+        </mvc:interceptor>
     </mvc:interceptors>
 
     <!--&lt;!&ndash;配置ViewResolver，可以使用多个，使用order属性进行排序&ndash;&gt;-->
