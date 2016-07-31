@@ -24,6 +24,12 @@
     <!-- 访问 静态资源 css js images -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
+    <!--全局过滤器 配置-->
+    <mvc:interceptors>
+        <!--<bean class="com.spring.mvc.demo.interceptor.HelloInterceptor"/>-->
+        <bean class="com.spring.mvc.demo.interceptor.UserInterceptor"/>
+    </mvc:interceptors>
+
     <!--&lt;!&ndash;配置ViewResolver，可以使用多个，使用order属性进行排序&ndash;&gt;-->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
         <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
@@ -36,7 +42,7 @@
             <value>
                 html=text/html
                 json=application/json
-                xml=application/json
+                xml=application/xml
             </value>
         </property>
         <property name="defaultContentType" value="text/html"/>

@@ -35,26 +35,26 @@ public class LoginServiceImpl implements LoginService {
     private static SystemRole initRole(){
         SystemRole sr = new SystemRole();
         sr.setRoleId("999");
-        sr.setRoleName("ÏµÍ³¹ÜÀíÔ±");
+        sr.setRoleName("ç³»ç»Ÿç®¡ç†å‘˜");
         return sr;
     }
 
     private static SystemRole initRole1(){
         SystemRole sr = new SystemRole();
         sr.setRoleId("888");
-        sr.setRoleName("×ÊÁÏ¹ÜÀíÔ±");
+        sr.setRoleName("èµ„æ–™ç®¡ç†å‘˜");
         return sr;
     }
 
     private static List<Score> initScore(){
         List<Score> lscore = Lists.newArrayList();
         Score score = new Score();
-        score.setItem("ÓïÎÄ");
+        score.setItem("è¯­æ–‡");
         score.setScoreNum("90");
         lscore.add(score);
 
         Score score1 = new Score();
-        score1.setItem("ÊıÑ§");
+        score1.setItem("æ•°å­¦");
         score1.setScoreNum("99");
         lscore.add(score1);
         return lscore;
@@ -63,12 +63,12 @@ public class LoginServiceImpl implements LoginService {
     private static List<Score> initScore1(){
         List<Score> lscore = Lists.newArrayList();
         Score score = new Score();
-        score.setItem("ÓïÎÄ");
+        score.setItem("è¯­æ–‡");
         score.setScoreNum("100");
         lscore.add(score);
 
         Score score1 = new Score();
-        score1.setItem("ÊıÑ§");
+        score1.setItem("æ•°å­¦");
         score1.setScoreNum("69");
         lscore.add(score1);
         return lscore;
@@ -77,10 +77,10 @@ public class LoginServiceImpl implements LoginService {
     private static List<UserDO> initUserList(){
         UserDO user = new UserDO();
         user.setUserId("001");
-        user.setUserName("ÕÅÈı");
+        user.setUserName("å¼ ä¸‰");
         user.setPassword("123456");
-        user.setAddress("ºÓÄÏÖ£Öİ");
-        user.setSex("ÄĞ");
+        user.setAddress("æ²³å—éƒ‘å·");
+        user.setSex("ç”·");
         user.setBirthday("1990-11-29");
         user.setEmail("zhangsan@gmail.com");
         user.setPhone("13612345678");
@@ -93,10 +93,10 @@ public class LoginServiceImpl implements LoginService {
 
         UserDO user1 = new UserDO();
         user1.setUserId("002");
-        user1.setUserName("ÀîËÄ");
+        user1.setUserName("æå››");
         user1.setPassword("654321");
-        user1.setAddress("ºÓÄÏÉÌÇğ");
-        user1.setSex("Å®");
+        user1.setAddress("æ²³å—å•†ä¸˜");
+        user1.setSex("å¥³");
         user1.setBirthday("1980-11-29");
         user1.setEmail("lisi@gmail.com");
         user1.setPhone("13987654321");
@@ -112,7 +112,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public List<UserDO> getUserList() {
-        log.debug("Ö´ĞĞ²éÑ¯ÏµÍ³ÓÃ»§ÁĞ±í£¡");
 
         return ls;
     }

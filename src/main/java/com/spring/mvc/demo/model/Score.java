@@ -8,6 +8,6 @@ import lombok.Data;
 @Data
 public class Score {
 
-    private String item; //¿Î³Ì
-    private String scoreNum; //·ÖÊı
+    private String item; //è¯¾ç¨‹åç§°
+    private String scoreNum; //åˆ†æ•°
 }

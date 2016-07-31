@@ -10,10 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * Created by zhangls on 2016/7/30 0030.
  */
+//@Slf4j
 @Controller
 @RequestMapping("/login")
 public class LoginController {
@@ -25,15 +28,17 @@ public class LoginController {
 
     @RequestMapping("/init")
     public String loginInit(){
-        log.debug("登录页面初始化！");
         return "login/login";
     }
 
     @RequestMapping(value = "/valLogin",method = RequestMethod.POST)
-    public String valLogin(UserDO user){
-        log.debug("验证登陆，username:{},password:{}",user.getUserName(),user.getPassword());
+    public String valLogin(UserDO user, HttpServletRequest request){
+        log.debug("username:{},password:{}",user.getUserName(),user.getPassword());
 
         if(loginService.valLogin(user)){
+
+            request.getSession().setAttribute("user",user);
+
             return "redirect:/user/list";
         }
 
