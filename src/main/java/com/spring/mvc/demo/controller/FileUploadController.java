@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * 文件上传组件
  * Created by zhangls on 2016/7/30 0030.
  */
 @Controller
