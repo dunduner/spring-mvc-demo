@@ -21,12 +21,18 @@ public class FileUploadController {
 
     private static Logger log = LoggerFactory.getLogger(LoginController.class);
 
+    @RequestMapping(value = "/uploadInit",method = RequestMethod.GET)
+    public String fileUpload() {
+
+        return "/upload/fileUpload";
+    }
+
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public String fileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 
         if(!file.isEmpty()){
             log.debug("file is name:{]", file.getOriginalFilename());
-            FileUtils.copyInputStreamToFile(file.getInputStream(),new File("c:/",System.currentTimeMillis()+file.getOriginalFilename()));
+            FileUtils.copyInputStreamToFile(file.getInputStream(),new File("D:/",System.currentTimeMillis()+file.getOriginalFilename()));
         }
 
         return "hello";

@@ -1,8 +1,11 @@
 package com.spring.mvc.demo.service.impl;
 
 import com.google.common.collect.Lists;
+import com.spring.mvc.demo.model.Score;
+import com.spring.mvc.demo.model.SystemRole;
 import com.spring.mvc.demo.model.UserDO;
 import com.spring.mvc.demo.service.LoginService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,13 +13,65 @@ import java.util.List;
 /**
  * Created by zhangls on 2016/7/30 0030.
  */
+@Slf4j
 @Service
 public class LoginServiceImpl implements LoginService {
 
     private static List<UserDO> ls = Lists.newArrayList();
+    private static List<Score> lscore = Lists.newArrayList();
+    private static List<Score> lscore1 = Lists.newArrayList();
+
+    private static SystemRole sr = new SystemRole();
+    private static SystemRole sr1 = new SystemRole();
 
     static {
+        lscore = initScore();
+        lscore1 = initScore1();
+        sr = initRole();
+        sr1 = initRole1();
         ls  = initUserList();
+    }
+
+    private static SystemRole initRole(){
+        SystemRole sr = new SystemRole();
+        sr.setRoleId("999");
+        sr.setRoleName("系统管理员");
+        return sr;
+    }
+
+    private static SystemRole initRole1(){
+        SystemRole sr = new SystemRole();
+        sr.setRoleId("888");
+        sr.setRoleName("资料管理员");
+        return sr;
+    }
+
+    private static List<Score> initScore(){
+        List<Score> lscore = Lists.newArrayList();
+        Score score = new Score();
+        score.setItem("语文");
+        score.setScoreNum("90");
+        lscore.add(score);
+
+        Score score1 = new Score();
+        score1.setItem("数学");
+        score1.setScoreNum("99");
+        lscore.add(score1);
+        return lscore;
+    }
+
+    private static List<Score> initScore1(){
+        List<Score> lscore = Lists.newArrayList();
+        Score score = new Score();
+        score.setItem("语文");
+        score.setScoreNum("100");
+        lscore.add(score);
+
+        Score score1 = new Score();
+        score1.setItem("数学");
+        score1.setScoreNum("69");
+        lscore.add(score1);
+        return lscore;
     }
 
     private static List<UserDO> initUserList(){
@@ -30,6 +85,10 @@ public class LoginServiceImpl implements LoginService {
         user.setEmail("zhangsan@gmail.com");
         user.setPhone("13612345678");
 
+        user.setScores(lscore);
+
+        user.setRole(sr);
+
         ls.add(user);
 
         UserDO user1 = new UserDO();
@@ -42,6 +101,10 @@ public class LoginServiceImpl implements LoginService {
         user1.setEmail("lisi@gmail.com");
         user1.setPhone("13987654321");
 
+        user1.setScores(lscore1);
+
+        user1.setRole(sr1);
+
         ls.add(user1);
 
         return ls;
@@ -49,11 +112,14 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public List<UserDO> getUserList() {
+        log.debug("执行查询系统用户列表！");
+
         return ls;
     }
 
     @Override
     public UserDO getUserById(String userId) {
+
 
         for(UserDO u : ls){
             if(userId.equals(u.getUserId())){

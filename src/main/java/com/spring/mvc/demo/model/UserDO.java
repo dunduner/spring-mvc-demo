@@ -2,6 +2,8 @@ package com.spring.mvc.demo.model;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * Created by zhangls on 2016/7/30 0030.
  */
@@ -16,5 +18,9 @@ public class UserDO {
     private String sex;
     private String birthday;
     private String phone;
+
+    private List<Score> scores;
+
+    private SystemRole role;
 
 }

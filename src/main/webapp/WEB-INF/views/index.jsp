@@ -16,5 +16,9 @@
 <br/>
 <br/>
 <a href="<%=request.getContextPath()%>/login/init">登  录</a>
+
+<br/>
+<br/>
+<a href="<%=request.getContextPath()%>/file/uploadInit">文件上传</a>
 </body>
 </html>

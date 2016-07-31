@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="<%=request.getContextPath()%>/file/upload" enctype="multipart/form-data">
+<form action="<%=request.getContextPath()%>/file/upload" enctype="multipart/form-data" method="post">
 
   <input type="file" name="file"/>
   <input type="submit"/>
