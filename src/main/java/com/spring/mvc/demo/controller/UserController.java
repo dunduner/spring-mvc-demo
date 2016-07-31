@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute UserDO user, Model model) {
+    public String addUser(@ModelAttribute UserDO user) {
         loginService.addUser(user);
         return "redirect:/user/list";
     }
