@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * Created by zhangls on 2016/7/30 0030.
  */
@@ -38,5 +40,19 @@ public class HelloController {
     @ResponseBody
     public String converter(Boolean bool){
         return bool.toString();
+    }
+
+    //http://localhost:8888/spring-mvc-demo/mvc/formatter/date?date=2016-07-01
+    @RequestMapping(value = "/formatter/date",method = RequestMethod.GET)
+     @ResponseBody
+     public String formatterDate(Date date){
+        return date.toString();
+    }
+
+    //http://localhost:8888/spring-mvc-demo/mvc/converter/date?date=2016-07-01
+    @RequestMapping(value = "/converter/date",method = RequestMethod.GET)
+    @ResponseBody
+    public String converterDate(Date date){
+        return date.toString();
     }
 }
